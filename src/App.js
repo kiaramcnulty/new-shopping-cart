@@ -25,6 +25,12 @@ const Product = ({ product }) => (
       <h1>{ product.title }</h1>
       <br></br>
       <h1>{ product.currencyFormat }{ product.price } { product.currencyId }</h1>
+      <Button.Group align="centered">
+        <Button rounded="true">S</Button>
+        <Button rounded="true">M</Button>
+        <Button rounded="true">L</Button>
+        <Button rounded="true">XL</Button>
+      </Button.Group>
     </center>
     
   </Card>
