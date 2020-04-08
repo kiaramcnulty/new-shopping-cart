@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from 'react';
+import 'rbx/index.css';
+import { Button, Tile, Card, Column, Container, Title } from 'rbx';
 
 import firebase from 'firebase/app';
 import 'firebase/database';
@@ -16,6 +18,22 @@ const firebaseConfig = {
 
 firebase.initializeApp(firebaseConfig);
 
+const Product = ({ product }) => (
+  <Card>
+    { product.title } : { product.currencyFormat }{ product.price } { product.currencyId }
+  </Card>
+);
+
+const ProductList = ({ products }) => (
+  <Column.Group multiline="true">
+      {products.map(product => 
+      <Column size="one-quarter">
+        <Product key={product.sku} product={ product } />
+      </Column>
+      )}
+  </Column.Group>
+);
+
 const App = () => {
   const [data, setData] = useState({});
   const products = Object.values(data);
@@ -29,10 +47,11 @@ const App = () => {
   }, []);
 
   return (
-    <ul>
-      {products.map(product => <li key={product.sku}>{product.title}</li>)}
-    </ul>
+    <Container>
+      <ProductList products={ products } />
+    </Container>
   );
 };
+
 
 export default App;
