@@ -20,8 +20,13 @@ firebase.initializeApp(firebaseConfig);
 
 const Product = ({ product }) => (
   <Card>
-    <img src={"data/products/" + product.sku + "_1.jpg"}></img>
-    { product.title } : { product.currencyFormat }{ product.price } { product.currencyId }
+    <center>
+      <img src={"data/products/" + product.sku + "_1.jpg"}></img>
+      <h1>{ product.title }</h1>
+      <br></br>
+      <h1>{ product.currencyFormat }{ product.price } { product.currencyId }</h1>
+    </center>
+    
   </Card>
 );
 
